@@ -25,16 +25,16 @@ ALLOW_GROUPS="{{ cfg.ALLOW_GROUPS | default('') }}"
 
 # sync users and groups from ALLOW_USERS and ALLOW_GROUPS to .snapshots
 # directory
-SYNC_ACL="{{ cfg.SYNC_ACL | default(false) | format_bool }}"
+SYNC_ACL="{{ format_bool(cfg.SYNC_ACL | default(false)) }}"
 
 
 # start comparing pre- and post-snapshot in background after creating
 # post-snapshot
-BACKGROUND_COMPARISON="{{ cfg.BACKGROUND_COMPARISON | default(true) | format_bool }}"
+BACKGROUND_COMPARISON="{{ format_bool(cfg.BACKGROUND_COMPARISON | default(true)) }}"
 
 
 # run daily number cleanup
-NUMBER_CLEANUP="{{ cfg.NUMBER_CLEANUP | default(true) | format_bool }}"
+NUMBER_CLEANUP="{{ format_bool(cfg.NUMBER_CLEANUP | default(true)) }}"
 
 # limit for number cleanup
 NUMBER_MIN_AGE="{{ cfg.NUMBER_MIN_AGE | default('1800') }}"
@@ -43,10 +43,10 @@ NUMBER_LIMIT_IMPORTANT="{{ cfg.NUMBER_LIMIT_IMPORTANT | default('10') }}"
 
 
 # create hourly snapshots
-TIMELINE_CREATE="{{ cfg.TIMELINE_CREATE | default(true) | format_bool }}"
+TIMELINE_CREATE="{{ format_bool(cfg.TIMELINE_CREATE | default(true)) }}"
 
 # cleanup hourly snapshots after some time
-TIMELINE_CLEANUP="{{ cfg.TIMELINE_CLEANUP | default(true) | format_bool }}"
+TIMELINE_CLEANUP="{{ format_bool(cfg.TIMELINE_CLEANUP | default(true)) }}"
 
 # limits for timeline cleanup
 TIMELINE_MIN_AGE="{{ cfg.TIMELINE_MIN_AGE | default('1800') }}"
@@ -58,7 +58,7 @@ TIMELINE_LIMIT_YEARLY="{{ cfg.TIMELINE_LIMIT_YEARLY | default('10') }}"
 
 
 # cleanup empty pre-post-pairs
-EMPTY_PRE_POST_CLEANUP="{{ cfg.EMPTY_PRE_POST_CLEANUP | default(true) | format_bool }}"
+EMPTY_PRE_POST_CLEANUP="{{ format_bool(cfg.EMPTY_PRE_POST_CLEANUP | default(true)) }}"
 
 # limits for empty pre-post-pair cleanup
 EMPTY_PRE_POST_MIN_AGE="{{ cfg.EMPTY_PRE_POST_MIN_AGE | default('1800') }}"
