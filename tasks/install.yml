@@ -1,0 +1,6 @@
+---
+- name: Install dependencies
+  package:
+    name: "{{ item }}"
+    state: "present"
+  loop: "{{ snapper_dependencies }}"

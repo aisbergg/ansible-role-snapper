@@ -1,0 +1,11 @@
+---
+- name: "Check if configuration '{{ config_name }}' exists"
+  command: "snapper -c {{ config_name }} get-config"
+  changed_when: false
+  failed_when: false
+  register: config_exists_status
+
+- name: "Delete the configuration '{{ config_name }}'"
+  command: "snapper --config {{ config_name }} delete-config"
+  changed_when: true
+  when: config_exists_status.rc == 0

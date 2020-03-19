@@ -1,0 +1,64 @@
+{{ ansible_managed | comment }}
+{% macro format_bool(value) %}{{ value | ternary('yes', 'no') }}{% endmacro %}
+
+# subvolume to snapshot
+SUBVOLUME="{{ cfg.SUBVOLUME | default(path) | default('/') }}"
+
+# filesystem type
+FSTYPE="{{ cfg.FSTYPE | default('btrfs') }}"
+
+
+# btrfs qgroup for space aware cleanup algorithms
+QGROUP="{{ cfg.QGROUP | default('') }}"
+
+
+# fraction of the filesystems space the snapshots may use
+SPACE_LIMIT="{{ cfg.SPACE_LIMIT | default('0.5') }}"
+
+# fraction of the filesystems space that should be free
+FREE_LIMIT="{{ cfg.FREE_LIMIT | default('0.2') }}"
+
+
+# users and groups allowed to work with config
+ALLOW_USERS="{{ cfg.ALLOW_USERS | default('') }}"
+ALLOW_GROUPS="{{ cfg.ALLOW_GROUPS | default('') }}"
+
+# sync users and groups from ALLOW_USERS and ALLOW_GROUPS to .snapshots
+# directory
+SYNC_ACL="{{ cfg.SYNC_ACL | default(false) | format_bool }}"
+
+
+# start comparing pre- and post-snapshot in background after creating
+# post-snapshot
+BACKGROUND_COMPARISON="{{ cfg.BACKGROUND_COMPARISON | default(true) | format_bool }}"
+
+
+# run daily number cleanup
+NUMBER_CLEANUP="{{ cfg.NUMBER_CLEANUP | default(true) | format_bool }}"
+
+# limit for number cleanup
+NUMBER_MIN_AGE="{{ cfg.NUMBER_MIN_AGE | default('1800') }}"
+NUMBER_LIMIT="{{ cfg.NUMBER_LIMIT | default('50') }}"
+NUMBER_LIMIT_IMPORTANT="{{ cfg.NUMBER_LIMIT_IMPORTANT | default('10') }}"
+
+
+# create hourly snapshots
+TIMELINE_CREATE="{{ cfg.TIMELINE_CREATE | default(true) | format_bool }}"
+
+# cleanup hourly snapshots after some time
+TIMELINE_CLEANUP="{{ cfg.TIMELINE_CLEANUP | default(true) | format_bool }}"
+
+# limits for timeline cleanup
+TIMELINE_MIN_AGE="{{ cfg.TIMELINE_MIN_AGE | default('1800') }}"
+TIMELINE_LIMIT_HOURLY="{{ cfg.TIMELINE_LIMIT_HOURLY | default('10') }}"
+TIMELINE_LIMIT_DAILY="{{ cfg.TIMELINE_LIMIT_DAILY | default('10') }}"
+TIMELINE_LIMIT_WEEKLY="{{ cfg.TIMELINE_LIMIT_WEEKLY | default('0') }}"
+TIMELINE_LIMIT_MONTHLY="{{ cfg.TIMELINE_LIMIT_MONTHLY | default('10') }}"
+TIMELINE_LIMIT_YEARLY="{{ cfg.TIMELINE_LIMIT_YEARLY | default('10') }}"
+
+
+# cleanup empty pre-post-pairs
+EMPTY_PRE_POST_CLEANUP="{{ cfg.EMPTY_PRE_POST_CLEANUP | default(true) | format_bool }}"
+
+# limits for empty pre-post-pair cleanup
+EMPTY_PRE_POST_MIN_AGE="{{ cfg.EMPTY_PRE_POST_MIN_AGE | default('1800') }}"

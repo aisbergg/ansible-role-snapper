@@ -1,0 +1,9 @@
+---
+# templates that can be used with `create-config`
+snapper_templates: {}
+
+# configurations to be present on the system
+snapper_configs: []
+
+# configurations to be absent on the system
+snapper_configs_absent: []

@@ -1,0 +1,23 @@
+---
+- name: "Check if configuration '{{ config.name }}' exists"
+  command: "snapper -c {{ config.name }} get-config"
+  changed_when: false
+  failed_when: false
+  register: config_exists_status
+
+- name: "Initialize configuration '{{ config.name }}'"
+  command: "snapper --config '{{ config.name }}' create-config '{{ config.path }}'"
+  changed_when: true
+  when: config_exists_status.rc == 1
+
+- name: "Change configuration '{{ config.name }}'"
+  template:
+    src: snapper-config.j2
+    dest: "/etc/snapper/configs/{{ config.name }}"
+    owner: root
+    group: root
+    mode: 0644
+    lstrip_blocks: true
+  vars:
+    cfg: "{{ config.vars }}"
+    path: "{{ config.path }}"

@@ -1,0 +1,6 @@
+---
+- import_tasks: install.yml
+  tags: snapper
+
+- import_tasks: configure.yml
+  tags: snapper
