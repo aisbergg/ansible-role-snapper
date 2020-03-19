@@ -27,12 +27,17 @@ To use Snapper, a compatible filesystem like _Btrfs_ needs to be used on the mac
         TIMELINE_LIMIT_HOURLY: 2
         TIMELINE_LIMIT_DAILY: 12
 
-  snapper_configs:
-    - path: /
-      name: root
-      vars:
-        TIMELINE_LIMIT_HOURLY: 2
-        TIMELINE_LIMIT_DAILY: 12
+    snapper_configs:
+      - path: /
+        name: root
+        vars:
+          TIMELINE_LIMIT_HOURLY: 2
+          TIMELINE_LIMIT_DAILY: 12
+      - path: /no/timeline
+        name: no-timeline
+        vars:
+          TIMELINE_CREATE: false
+          TIMELINE_CLEANUP: false
   roles:
     - aisbergg.snapper
 ```
