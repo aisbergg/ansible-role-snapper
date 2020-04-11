@@ -7,3 +7,8 @@ snapper_configs: []
 
 # configurations to be absent on the system
 snapper_configs_absent: []
+
+# systemd timers
+snapper_timer_timeline_enabled: true
+snapper_timer_cleanup_enabled: true
+snapper_timer_boot_enabled: false

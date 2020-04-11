@@ -1,6 +1,26 @@
 ---
-- import_tasks: install.yml
+- name: Install dependencies
   tags: snapper
+  package:
+    name: "{{ item }}"
+    state: "present"
+  loop: "{{ snapper_dependencies }}"
 
 - import_tasks: configure.yml
   tags: snapper
+
+- name: Manage Snapper timers
+  tags: snapper
+  systemd:
+    name: "{{ timer.name }}"
+    enabled: "{{ timer.enabled }}"
+  loop:
+    - name: snapper-timeline.timer
+      enabled: "{{ snapper_timer_timeline_enabled }}"
+    - name: snapper-cleanup.timer
+      enabled: "{{ snapper_timer_cleanup_enabled }}"
+    - name: snapper-boot.timer
+      enabled: "{{ snapper_timer_boot_enabled }}"
+  loop_control:
+    label: "{{ timer.name }}"
+    loop_var: timer
