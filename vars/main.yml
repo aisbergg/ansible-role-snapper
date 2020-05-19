@@ -1,6 +1,4 @@
 ---
-# defaults
-
 # required dependencies
-snapper_dependencies:
+__snapper_dependencies:
   - "snapper"

@@ -1,5 +1,5 @@
 {{ ansible_managed | comment }}
-{% macro format_bool(value) %}{{ value | ternary('yes', 'no') }}{% endmacro %}
+{%- macro format_bool(value) %}{{ value | ternary('yes', 'no') }}{% endmacro %}
 
 # subvolume to snapshot
 SUBVOLUME="{{ cfg.SUBVOLUME | default(path) | default('/') }}"

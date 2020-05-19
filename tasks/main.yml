@@ -1,16 +1,16 @@
 ---
 - name: Install dependencies
-  tags: snapper
+  tags: [snapper, snapper_install]
   package:
     name: "{{ item }}"
     state: "present"
-  loop: "{{ snapper_dependencies }}"
+  loop: "{{ __snapper_dependencies }}"
 
 - import_tasks: configure.yml
-  tags: snapper
+  tags: [snapper, snapper_config]
 
 - name: Manage Snapper timers
-  tags: snapper
+  tags: [snapper, snapper_service]
   systemd:
     name: "{{ timer.name }}"
     enabled: "{{ timer.enabled }}"
