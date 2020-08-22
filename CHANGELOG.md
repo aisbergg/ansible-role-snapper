@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2020-08-22
+### Changed
+- Always sign Git tags
+
 ## [1.2.0] - 2020-05-19
 ### Changed
 - Clean up
