@@ -2,12 +2,14 @@
 dependencies: []
 
 galaxy_info:
-  author: Aisbergg
+  author: André Lehmann
+  namespace: aisbergg
+  role_name: snapper
   description: Install and configure Snapper, a snapshot tool for Linux.
   company: none
-  issue_tracker_url: https://github.com/Aisbergg/ansible-role-snapper/issues
+  issue_tracker_url: https://github.com/aisbergg/ansible-role-snapper/issues
   license: MIT
-  min_ansible_version: 2.5
+  min_ansible_version: 2.10
 
   platforms:
     - name: EL
@@ -24,10 +26,11 @@ galaxy_info:
         - stretch
     - name: Ubuntu
       versions:
+        - hirsute
+        - groovy
         - focal
         - bionic
-        - xenial
-    - name: Archlinux
+    - name: ArchLinux
       versions:
         - all
 

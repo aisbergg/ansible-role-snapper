@@ -1,6 +1,6 @@
 ---
-- name: Create snapper templates
-  template:
+- name: create snapper templates
+  ansible.builtin.template:
     src: snapper-config.j2
     dest: "/etc/snapper/config-templates/{{ item.key }}"
     owner: root
@@ -11,12 +11,14 @@
     cfg: "{{ item.value }}"
   with_dict: "{{ snapper_templates }}"
 
-- include_tasks: create_config.yml
+- name: include configuration creation tasks
+  ansible.builtin.include_tasks: create_config.yml
   loop: "{{ snapper_configs }}"
   loop_control:
     loop_var: config
 
-- include_tasks: delete_config.yml
+- name: include configuration deletion tasks
+  ansible.builtin.include_tasks: delete_config.yml
   loop: "{{ snapper_configs_absent }}"
   loop_control:
     loop_var: config_name

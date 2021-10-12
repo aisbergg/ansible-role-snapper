@@ -1,17 +1,15 @@
 ---
-- name: Install dependencies
+- name: include installation tasks
   tags: [snapper, snapper_install]
-  package:
-    name: "{{ item }}"
-    state: "present"
-  loop: "{{ __snapper_dependencies }}"
+  ansible.builtin.import_tasks: install.yml
 
-- import_tasks: configure.yml
+- name: include configuration tasks
   tags: [snapper, snapper_config]
+  ansible.builtin.import_tasks: configure.yml
 
-- name: Manage Snapper timers
+- name: manage Snapper timers
   tags: [snapper, snapper_service]
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ timer.name }}"
     enabled: "{{ timer.enabled }}"
   loop:
