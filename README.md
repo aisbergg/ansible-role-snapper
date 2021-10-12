@@ -11,14 +11,14 @@ To use Snapper, a compatible filesystem like _Btrfs_ needs to be used on the mac
 | Variable | Default | Comments |
 |----------|---------|----------|
 | `snapper_templates` | `{}` | Dictionary (key-value pairs) of Snapper templates. The templates can be used, when using `create-config` manually. Available options for the templates can be looked up in the [`templates/snapper-config.j2`](templates/snapper-config.j2) file. |
-| `snapper_timer_timeline_enabled` | `true` | Enable/Disable the timeline timer. | 
-| `snapper_timer_cleanup_enabled` | `true` | Enable/Disable the cleanup timer. | 
-| `snapper_timer_boot_enabled` | `false` | Enable/Disable the boot timer. | 
-| `snapper_configs` | `[]` | List of Snapper configurations to be present on the system. | 
-| `snapper_configs.path` |  | Path to the volume (e.g. Btrfs subvolume). | 
-| `snapper_configs.name` |  | Name of the configuration. | 
-| `snapper_configs.vars` | `{}` | Dictionary (key-value pairs) of configuration variables. Available variables can be looked up in the [`templates/snapper-config.j2`](templates/snapper-config.j2) file. | 
-| `snapper_configs_absent` | `[]` | List of Snapper configurations to be absent on the system. | 
+| `snapper_timer_timeline_enabled` | `true` | Enable/Disable the timeline timer. |
+| `snapper_timer_cleanup_enabled` | `true` | Enable/Disable the cleanup timer. |
+| `snapper_timer_boot_enabled` | `false` | Enable/Disable the boot timer. |
+| `snapper_configs` | `[]` | List of Snapper configurations to be present on the system. |
+| `snapper_configs.path` |  | Path to the volume (e.g. Btrfs subvolume). |
+| `snapper_configs.name` |  | Name of the configuration. |
+| `snapper_configs.vars` | `{}` | Dictionary (key-value pairs) of configuration variables. Available variables can be looked up in the [`templates/snapper-config.j2`](templates/snapper-config.j2) file. |
+| `snapper_configs_absent` | `[]` | List of Snapper configurations to be absent on the system. |
 
 ## Example Playbook
 
