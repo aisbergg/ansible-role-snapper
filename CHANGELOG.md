@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
+- [2.1.0 (2022-01-28)](#2.1.0-2022-01-28)
 - [2.0.0 (2021-10-12)](#200-2021-10-12)
 - [1.2.1 (2020-08-22)](#121-2020-08-22)
 - [1.2.0 (2020-05-19)](#120-2020-05-19)
@@ -9,6 +10,18 @@ All notable changes to this project will be documented in this file.
 - [1.0.0 (2020-03-19)](#100-2020-03-19)
 
 ---
+
+<a name="2.1.0"></a>
+## [2.1.0](https://github.com/aisbergg/ansible-role-snapper/compare/v2.0.0...2.1.0) (2022-01-28)
+
+### CI Configuration
+
+- fix automatic release and publish process
+
+### Chores
+
+- include changelog in bump commits
+
 
 <a name="2.0.0"></a>
 ## [2.0.0](https://github.com/aisbergg/ansible-role-snapper/compare/v1.2.1...v2.0.0) (2021-10-12)
