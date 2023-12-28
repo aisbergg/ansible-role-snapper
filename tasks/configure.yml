@@ -1,4 +1,14 @@
 ---
+- name: create snapper directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: '755'
+  loop:
+    - "/etc/snapper/config-templates/"
+
 - name: create snapper templates
   ansible.builtin.template:
     src: snapper-config.j2
